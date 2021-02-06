@@ -29,7 +29,7 @@ public:
 		_Mat3 result = *this;
 		return result *= rhs;
 	}
-	_Mat3& operator*= (cont _Mat3& rhs) const
+	_Mat3& operator*= (const _Mat3& rhs) const
 	{
 		return *this = *this * rhs;
 	}
@@ -120,18 +120,18 @@ public:
 };
 
 template<typename T>
-_Vec2<T>& operator*=(_Vec2<T>& lhs, const _Mat3<T>& rhs)
+_Vec3<T>& operator*=(_Vec3<T>& lhs, const _Mat3<T>& rhs)
 {
 	return lhs = lhs * rhs;
 }
 
 template<typename T>
-_Vec2<T> operator*(const _Vec2<T>& lhs, const _Mat3<T>& rhs)
+_Vec3<T> operator*(const _Vec3<T>& lhs, const _Mat3<T>& rhs)
 {
 	return {
-		lhs.x * rhs.elements[0][0] + lhs.y * rhs.elements[1][0], lhs.z *rhs.elements[2][0],
-		lhs.x * rhs.elements[0][1] + lhs.y * rhs.elements[1][1], lhs.z* rhs.elements[2][1],
-		lhs.x* rhs.elements[0][2] + lhs.y * rhs.elements[1][2], lhs.z* rhs.elements[2][2],
+		lhs.x * rhs.elements[0][0] + lhs.y * rhs.elements[1][0]+ lhs.z *rhs.elements[2][0],
+		lhs.x * rhs.elements[0][1] + lhs.y * rhs.elements[1][1]+ lhs.z* rhs.elements[2][1],
+		lhs.x* rhs.elements[0][2] + lhs.y * rhs.elements[1][2]+ lhs.z* rhs.elements[2][2],
 
 	};
 }
