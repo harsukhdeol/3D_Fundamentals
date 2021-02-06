@@ -21,6 +21,8 @@
 #pragma once
 
 #include "Graphics.h"
+#include "PlaneScreenTransformer.h"
+#include "Cube.h"
 
 class Game
 {
@@ -38,7 +40,6 @@ private:
 private:
 	MainWindow& wnd;
 	Graphics gfx;
-	/********************************/
-	/*  User Variables              */
-	/********************************/
+	PlaneScreenTransformer pst;
+	Cube cube;
 };

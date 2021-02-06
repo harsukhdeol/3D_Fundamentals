@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	cube(1.0)
 {
 }
 
@@ -42,4 +43,17 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	auto lines = cube.GetLines();
+	for (auto& v : lines.vertices)
+	{
+		pst.Transform(v);
+	}
+
+	for (auto i = lines.indices.cbegin(),
+		 end = lines.indices.cend();
+		i!= end;
+		std::advance(i,2)) // advance indices by 2s
+	{
+		gfx.DrawLine(lines.vertices[*i], lines.vertices[*std::next(i)], Colors::White);
+	}
 }
