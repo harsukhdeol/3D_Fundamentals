@@ -46,4 +46,5 @@ private:
 	float theta_x = 0.0f;
 	float theta_y = 0.0f;
 	float theta_z = 0.0f;
+	float offset_z = 2.0f;
 };
