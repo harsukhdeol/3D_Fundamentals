@@ -402,7 +402,7 @@ void Graphics::DrawTriangle(const Vec2& v0, const Vec2& v1, const Vec2& v2, cons
 	}
 	else if (pv1->y == pv2->y) {// natural flat bottom
 		if (pv2->x < pv1->x) { std::swap(pv2, pv1); }
-		DrawFlatTopTriangle(*pv0, *pv1, *pv2, c);
+		DrawFlatBottomTriangle(*pv0, *pv1, *pv2, c);
 	}
 	else {// regular triangle needs to be split into 2
 
@@ -423,8 +423,8 @@ void Graphics::DrawTriangle(const Vec2& v0, const Vec2& v1, const Vec2& v2, cons
 void Graphics::DrawFlatBottomTriangle(const Vec2& v0, const Vec2& v1, const Vec2& v2, const Color c)
 {
 	// slope = x/y
-	float m0 = (v2.x - v0.x) / (v2.y - v0.y);
-	float m1 = (v1.x - v0.x) / (v1.y - v1.y);
+	const float m0 = (v1.x - v0.x) / (v1.y - v0.y);
+	const float m1 = (v2.x - v0.x) / (v2.y - v0.y);
 
 	// start and end of scanlines
 	const int yStart = (int)ceil(v0.y - 0.5f);
